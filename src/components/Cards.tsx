@@ -13,7 +13,8 @@ function Cards() {
   const searchParams = new URLSearchParams(location.search);
   const year = searchParams.get("year");
   console.log("year", year);
-  const [data, setData] = React.useState<ICard[] | null>(null);
+  const [data] = React.useState<ICard[] | null>(null);
+  console.log("year", data);
   // const [isError, setIsError] = React.useState<boolean>(false);
   // const searchParams = new URLSearchParams(location.search);
   // const year = searchParams.get("year");

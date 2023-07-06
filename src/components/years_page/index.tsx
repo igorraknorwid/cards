@@ -35,7 +35,7 @@ function Years() {
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>"Error fetching data from Sanity:"</div>;
   return (
-    <div>
+    <div className='m-10'>
       {sortedData?.map((item) => (
         <li key={item._id}>
           <Link to={`cards?year=${item.title}`}>{item.title}</Link>

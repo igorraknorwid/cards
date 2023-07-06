@@ -12,6 +12,15 @@ function Cards() {
   const [data, setData] = React.useState<ICard[] | null>(null);
   const [isError, setIsError] = React.useState<boolean>(false);
 
+  function getTotal(arr: string[], value: string) {
+    return arr.filter((categ) => categ === value).length;
+  }
+  function setKartki(total: number) {
+    if (total < 2) return "kartka";
+    if (total > 2 && total < 5) return "kartki";
+    if (total > 4) return "kartkek";
+  }
+
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,18 +36,30 @@ function Cards() {
     fetchData();
   }, [year]);
   const categoryArr = data?.map((item) => item.theme.title);
-  const categories = Array.from(new Set(categoryArr));
+  const dublicateRemoving = Array.from(new Set(categoryArr));
+  const categories = dublicateRemoving?.map((item) => {
+    return {
+      title: item,
+      total: categoryArr ? getTotal(categoryArr, item) : 0,
+    };
+  });
   // console.log("CARDS", data);
   // console.log("Category", categories);
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (
-    <div>
-      <h1>Rok {year}</h1>
+    <div className='m-10'>
+      <h1>Bibliografie za rok {year}</h1>
+      {data && (
+        <div>
+          {data.length} {setKartki(data.length)} znajdziono
+        </div>
+      )}
       <ul>
         {categories.map((c, i) => (
           <li key={i}>
-            <Link to={`category?year=${year}&category=${c}`}>{c}</Link>
+            <Link to={`category?year=${year}&category=${c}`}>{c.title}</Link>
+            {c.total ? <div>{c.total}</div> : null}
           </li>
         ))}
       </ul>

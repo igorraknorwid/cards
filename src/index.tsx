@@ -10,7 +10,7 @@ const router = createBrowserRouter([
       <div>
         <h1 className='text-3xl font-bold underline'>Hello world!</h1>
         <Years />
-        <Link to='about'>About Us</Link>
+        <Link to='about?year=1944'>About Us</Link>
       </div>
     ),
   },

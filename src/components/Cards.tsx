@@ -2,10 +2,10 @@ import React from "react";
 import client from "../sanityClient";
 import { useLocation } from "react-router-dom";
 
-// interface ICard {
-//   _id: string;
-//   title: string;
-// }
+interface ICard {
+  _id: string;
+  title: string;
+}
 
 function Cards() {
   console.log(client);
@@ -13,7 +13,7 @@ function Cards() {
   const searchParams = new URLSearchParams(location.search);
   const year = searchParams.get("year");
   console.log("year", year);
-  // const [data, setData] = React.useState<ICard[] | null>(null);
+  const [data, setData] = React.useState<ICard[] | null>(null);
   // const [isError, setIsError] = React.useState<boolean>(false);
   // const searchParams = new URLSearchParams(location.search);
   // const year = searchParams.get("year");

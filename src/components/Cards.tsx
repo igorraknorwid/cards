@@ -18,17 +18,18 @@ function Cards() {
   const [isError] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const query = `*[_type == "card" && '${year}' in years[]->title]{ _id, title }`;
-    //     const result = await client.fetch<ICard[]>(query);
-    //     setData(result);
-    //   } catch (error) {
-    //     setIsError(true);
-    //     console.error("Error fetching data from Sanity:", error);
-    //   }
-    // };
-    // fetchData();
+    const fetchData = async () => {
+      try {
+        console.log("fetchDat");
+        // const query = `*[_type == "card" && '${year}' in years[]->title]{ _id, title }`;
+        // const result = await client.fetch<ICard[]>(query);
+        // setData(result);
+      } catch (error) {
+        // setIsError(true);
+        // console.error("Error fetching data from Sanity:", error);
+      }
+    };
+    fetchData();
   }, []);
 
   if (!data) return <div>...LOADING</div>;

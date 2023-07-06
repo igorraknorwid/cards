@@ -20,8 +20,8 @@ function Cards() {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("fetchDat");
-        // const query = `*[_type == "card" && '${year}' in years[]->title]{ _id, title }`;
+        const query = `*[_type == "card" && '${year}' in years[]->title]{ _id, title }`;
+        console.log("query", query);
         // const result = await client.fetch<ICard[]>(query);
         // setData(result);
       } catch (error) {

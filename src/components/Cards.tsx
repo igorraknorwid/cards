@@ -20,7 +20,7 @@ function Cards() {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const query = `*[_type == "card" && '1946' in years[]->title]{ _id, title }`;
+        const query = `*[_type == "card" && '${year}' in years[]->title]{ _id, title }`;
         console.log("query", query);
         const result = await client.fetch<ICard[]>(query);
         setData(result);
@@ -30,7 +30,7 @@ function Cards() {
       }
     };
     fetchData();
-  }, []);
+  }, [year]);
 
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;

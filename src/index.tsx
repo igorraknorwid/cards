@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import "./index.css";
 import Years from "./components/Years";
-// import Cards from "./components/Cards";
+import Cards from "./components/Cards";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,10 +17,10 @@ const router = createBrowserRouter([
       </div>
     ),
   },
-  // {
-  //   path: "cards",
-  //   element: <Cards />,
-  // },
+  {
+    path: "cards",
+    element: <Cards />,
+  },
   {
     path: "about",
     element: <div> Bibliografia Ziemi Lubuskej 1945-1989</div>,

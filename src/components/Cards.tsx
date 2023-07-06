@@ -1,5 +1,5 @@
 import React from "react";
-// import client from "../sanityClient";
+import client from "../sanityClient";
 // import { useLocation } from "react-router-dom";
 
 // interface ICard {
@@ -8,6 +8,7 @@ import React from "react";
 // }
 
 function Cards() {
+  console.log(client);
   // const location = useLocation();
   // const [data, setData] = React.useState<ICard[] | null>(null);
   // const [isError, setIsError] = React.useState<boolean>(false);

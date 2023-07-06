@@ -2,8 +2,8 @@ import * as React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import "./index.css";
-import Years from "./components/Years";
-import Cards from "./components/Cards";
+import Years from "./components/years_page";
+import Cards from "./components/cards_page";
 import ErrorPage from "./PageError";
 const router = createBrowserRouter([
   {
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
   },
   {
     path: "cards",
+    element: <Cards />,
+  },
+  {
+    path: "cards/category",
     element: <Cards />,
   },
   {

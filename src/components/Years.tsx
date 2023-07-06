@@ -10,6 +10,7 @@ interface IYear {
 
 function Years() {
   const [data, setData] = React.useState<IYear[] | null>(null);
+  const [isError, setIsError] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,7 @@ function Years() {
         const result = await client.fetch<IYear[]>(query);
         setData(result);
       } catch (error) {
+        setIsError(true);
         console.error("Error fetching data from Sanity:", error);
       }
     };
@@ -30,7 +32,9 @@ function Years() {
     (a, b) => parseInt(a.title) - parseInt(b.title)
   );
   console.log("data", data);
+
   if (!data) return <div>...LOADING</div>;
+  if (isError) return <div>"Error fetching data from Sanity:"</div>;
   return (
     <div>
       {sortedData?.map((item) => (

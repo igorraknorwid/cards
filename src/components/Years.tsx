@@ -1,15 +1,23 @@
 import React from "react";
 import client from "../sanityClient";
 import "../index.css";
+import { Link } from "react-router-dom";
+
+interface IYear {
+  _id: string;
+  title: string;
+}
 
 function Years() {
-  const [data, setData] = React.useState<any[] | null>(null);
+  const [data, setData] = React.useState<IYear[] | null>(null);
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const query = `*[_type == "card"]`; // Replace 'YOUR_DOCUMENT_TYPE' with your actual Sanity document type
-        const result = await client.fetch<any[]>(query);
+        const query = `*[_type == "year"]{ _id,
+          title,
+        }`; // Replace 'YOUR_DOCUMENT_TYPE' with your actual Sanity document type
+        const result = await client.fetch<IYear[]>(query);
         setData(result);
       } catch (error) {
         console.error("Error fetching data from Sanity:", error);
@@ -18,11 +26,19 @@ function Years() {
 
     fetchData();
   }, []);
+  const sortedData = data?.sort(
+    (a, b) => parseInt(a.title) - parseInt(b.title)
+  );
   console.log("data", data);
+  if (!data) return <div>...LOADING</div>;
   return (
-    <h1 className='text-3xl font-bold underline text-red-600'>
-      Simple React Typescript Tailwind Sample
-    </h1>
+    <div>
+      {sortedData?.map((item) => (
+        <li key={item._id}>
+          <Link to={`cards?year=${item.title}`}>{item.title}</Link>
+        </li>
+      ))}
+    </div>
   );
 }
 

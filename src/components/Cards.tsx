@@ -15,7 +15,7 @@ function Cards() {
   console.log("year", year);
   const [data] = React.useState<ICard[] | null>(null);
   console.log("year", data);
-  // const [isError, setIsError] = React.useState<boolean>(false);
+  const [isError] = React.useState<boolean>(false);
   // const searchParams = new URLSearchParams(location.search);
   // const year = searchParams.get("year");
   // React.useEffect(() => {
@@ -34,7 +34,7 @@ function Cards() {
   // }, [year]);
 
   // if (!data) return <div>...LOADING</div>;
-  // if (isError) return <div>"Error fetching data from Sanity:"</div>;
+  if (isError) return <div>"Error fetching data from Sanity:"</div>;
   return <div>Rok</div>;
 }
 

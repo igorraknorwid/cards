@@ -13,20 +13,20 @@ function Cards() {
   const searchParams = new URLSearchParams(location.search);
   const year = searchParams.get("year");
   console.log("year", year);
-  const [data] = React.useState<ICard[] | null>(null);
+  const [data, setData] = React.useState<ICard[] | null>(null);
   console.log("year", data);
-  const [isError] = React.useState<boolean>(false);
+  const [isError, setIsError] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
         const query = `*[_type == "card" && '1946' in years[]->title]{ _id, title }`;
         console.log("query", query);
-        // const result = await client.fetch<ICard[]>(query);
-        // setData(result);
+        const result = await client.fetch<ICard[]>(query);
+        setData(result);
       } catch (error) {
-        // setIsError(true);
-        // console.error("Error fetching data from Sanity:", error);
+        setIsError(true);
+        console.error("Error fetching data from Sanity:", error);
       }
     };
     fetchData();

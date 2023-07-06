@@ -1,7 +1,6 @@
 import React from "react";
 import client from "../sanityClient";
 import { useLocation } from "react-router-dom";
-import { error } from "console";
 
 interface ICard {
   _id: string;

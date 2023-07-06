@@ -1,17 +1,16 @@
 import React from "react";
-import client from "../sanityClient";
-import { useLocation } from "react-router-dom";
-import "../index.css";
+// import client from "../sanityClient";
+// import { useLocation } from "react-router-dom";
 
-interface ICard {
-  _id: string;
-  title: string;
-}
+// interface ICard {
+//   _id: string;
+//   title: string;
+// }
 
 function Cards() {
   // const location = useLocation();
-  const [data, setData] = React.useState<ICard[] | null>(null);
-  const [isError, setIsError] = React.useState<boolean>(false);
+  // const [data, setData] = React.useState<ICard[] | null>(null);
+  // const [isError, setIsError] = React.useState<boolean>(false);
   // const searchParams = new URLSearchParams(location.search);
   // const year = searchParams.get("year");
   // React.useEffect(() => {
@@ -29,8 +28,8 @@ function Cards() {
   //   fetchData();
   // }, [year]);
 
-  if (!data) return <div>...LOADING</div>;
-  if (isError) return <div>"Error fetching data from Sanity:"</div>;
+  // if (!data) return <div>...LOADING</div>;
+  // if (isError) return <div>"Error fetching data from Sanity:"</div>;
   return <div>Rok</div>;
 }
 

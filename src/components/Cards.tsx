@@ -34,7 +34,7 @@ function Cards() {
 
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;
-  return <div>Rok</div>;
+  return <div>Rok {year}</div>;
 }
 
 export default Cards;

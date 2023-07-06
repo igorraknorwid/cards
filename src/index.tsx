@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import "./index.css";
 import Years from "./components/Years";
 import Cards from "./components/Cards";
+import ErrorPage from "./PageError";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
         <Link to='about?year=1944'>O Projekcie</Link>
       </div>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "cards",

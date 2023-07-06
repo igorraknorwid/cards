@@ -10,7 +10,9 @@ import { useLocation } from "react-router-dom";
 function Cards() {
   console.log(client);
   const location = useLocation();
-  console.log(location);
+  const searchParams = new URLSearchParams(location.search);
+  const year = searchParams.get("year");
+  console.log("year", year);
   // const [data, setData] = React.useState<ICard[] | null>(null);
   // const [isError, setIsError] = React.useState<boolean>(false);
   // const searchParams = new URLSearchParams(location.search);

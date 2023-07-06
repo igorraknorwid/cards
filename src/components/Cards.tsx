@@ -1,6 +1,6 @@
 import React from "react";
 import client from "../sanityClient";
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // interface ICard {
 //   _id: string;
@@ -9,7 +9,8 @@ import client from "../sanityClient";
 
 function Cards() {
   console.log(client);
-  // const location = useLocation();
+  const location = useLocation();
+  console.log(location);
   // const [data, setData] = React.useState<ICard[] | null>(null);
   // const [isError, setIsError] = React.useState<boolean>(false);
   // const searchParams = new URLSearchParams(location.search);

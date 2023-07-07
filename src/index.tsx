@@ -6,6 +6,7 @@ import Years from "./components/pages/year_page";
 import Cards from "./components/pages/cards_page";
 import CardsByCategory from "./components/pages/category_page";
 import ErrorPage from "./PageError";
+import CardsByTitle from "./components/pages/title_page";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "cards/category",
     element: <CardsByCategory />,
+  },
+  {
+    path: "cards/title",
+    element: <CardsByTitle />,
   },
   {
     path: "about",

@@ -3,6 +3,7 @@ import client from "../../../sanityClient";
 import { useLocation } from "react-router-dom";
 import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
+import YearTitle from "../../year_title/YearTitle";
 
 function CardsByCategory() {
   const location = useLocation();
@@ -33,7 +34,7 @@ function CardsByCategory() {
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (
     <div className='m-10'>
-      <h1>Bibliografie za rok {year}</h1>
+      <YearTitle year={year} />
       <p>Temat:{category}</p>
       <CardList cards={data} />
     </div>

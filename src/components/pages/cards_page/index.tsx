@@ -5,6 +5,8 @@ import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
 import CategoryNavigation from "../../category_navigation/CategoryNavigation";
 import TitleNavigation from "../../title_navigation/TitleNavigation";
+import CardCounter from "../../card_couter/CardCounter";
+import YearTitle from "../../year_title/YearTitle";
 
 function Cards() {
   const location = useLocation();
@@ -12,12 +14,6 @@ function Cards() {
   const year = searchParams.get("year");
   const [data, setData] = React.useState<ICard[] | null>(null);
   const [isError, setIsError] = React.useState<boolean>(false);
-
-  function setKartki(total: number) {
-    if (total < 2) return "kartka";
-    if (total > 2 && total < 5) return "kartki";
-    if (total > 4) return "kartkek";
-  }
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -40,12 +36,8 @@ function Cards() {
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (
     <div className='m-10'>
-      <h1>Bibliografie za rok {year}</h1>
-      {data && (
-        <div>
-          {data.length} {setKartki(data.length)}
-        </div>
-      )}
+      <YearTitle year={year} />
+      <CardCounter cards={data} />
       <CategoryNavigation cards={data} year={year} />
       <TitleNavigation cards={data} year={year} />
       <CardList cards={data} />

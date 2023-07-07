@@ -5,8 +5,9 @@ import "./index.css";
 import Years from "./components/pages/year_page";
 import Cards from "./components/pages/cards_page";
 import CardsByCategory from "./components/pages/category_page";
-import ErrorPage from "./PageError";
 import CardsByTitle from "./components/pages/title_page";
+import ErrorPage from "./PageError";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,18 +25,22 @@ const router = createBrowserRouter([
   {
     path: "cards",
     element: <Cards />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "cards/category",
     element: <CardsByCategory />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "cards/title",
     element: <CardsByTitle />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "about",
     element: <div> Bibliografia Ziemi Lubuskej 1945-1989</div>,
+    errorElement: <ErrorPage />,
   },
 ]);
 

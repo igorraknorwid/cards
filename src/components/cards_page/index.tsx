@@ -52,13 +52,15 @@ function Cards() {
       <h1>Bibliografie za rok {year}</h1>
       {data && (
         <div>
-          {data.length} {setKartki(data.length)} znajdziono
+          {data.length} {setKartki(data.length)}
         </div>
       )}
       <ul>
         {categories.map((c, i) => (
           <li key={i}>
-            <Link to={`category?year=${year}&category=${c}`}>{c.title}</Link>
+            <Link to={`category?year=${year}&category=${c.title}`}>
+              {c.title}
+            </Link>
             {c.total ? <div>{c.total}</div> : null}
           </li>
         ))}

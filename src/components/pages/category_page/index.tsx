@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
 import YearTitle from "../../year_title/YearTitle";
+import TitleFilter from "../../title_navigation/TitleFilter";
 
 function CardsByCategory() {
   const location = useLocation();
@@ -11,7 +12,12 @@ function CardsByCategory() {
   const year = searchParams.get("year");
   const category = searchParams.get("category");
   const [data, setData] = React.useState<ICard[] | null>(null);
+  const [filter, setFilter] = React.useState<string | null>(null);
   const [isError, setIsError] = React.useState<boolean>(false);
+
+  const filterItemHandler = (value: string | null) => {
+    setFilter(value);
+  };
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +34,14 @@ function CardsByCategory() {
     fetchData();
   }, [year, category]);
 
+  const filteredData = data?.filter((item) => {
+    if (filter === null) {
+      return true;
+    } else {
+      return item.title === filter;
+    }
+  });
+
   // console.log("CARDS", data);
   console.log("Category", category);
   if (!data) return <div>...LOADING</div>;
@@ -36,7 +50,8 @@ function CardsByCategory() {
     <div className='m-10'>
       <YearTitle year={year} />
       <p>Temat:{category}</p>
-      <CardList cards={data} />
+      <TitleFilter cards={data} dataHandler={filterItemHandler} />
+      {filteredData && <CardList cards={filteredData} />}
     </div>
   );
 }

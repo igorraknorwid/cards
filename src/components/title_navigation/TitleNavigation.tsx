@@ -17,7 +17,7 @@ function TitleNavigation({ cards, year }: INavigation) {
   });
 
   return (
-    <ul className='flex gap-x-4 border'>
+    <ul className='flex gap-x-4 border border-red-500'>
       {items.map((c, i) => (
         <li key={i}>
           <Link to={`title?year=${year}&title=${c.title}`}>

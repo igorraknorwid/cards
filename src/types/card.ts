@@ -9,3 +9,8 @@ export interface ICard {
   image_slug: string;
   theme: ITheme;
 }
+
+export interface INavigation {
+  cards: ICard[];
+  year: string | null;
+}

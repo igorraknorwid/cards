@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
 import CategoryNavigation from "../../category_navigation/CategoryNavigation";
+import TitleNavigation from "../../title_navigation/TitleNavigation";
 
 function Cards() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function Cards() {
         </div>
       )}
       <CategoryNavigation cards={data} year={year} />
+      <TitleNavigation cards={data} year={year} />
       <CardList cards={data} />
     </div>
   );

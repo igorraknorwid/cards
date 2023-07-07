@@ -6,13 +6,13 @@ function getTotal(arr: string[], value: string) {
   return arr.filter((item) => item === value).length;
 }
 
-function CategoryNavigation({ cards, year }: INavigation) {
-  const categoryArrByTheme = cards.map((item) => item.theme.title);
-  const dublicateRemoving = Array.from(new Set(categoryArrByTheme));
+function TitleNavigation({ cards, year }: INavigation) {
+  const arrByTitle = cards.map((item) => item.title);
+  const dublicateRemoving = Array.from(new Set(arrByTitle));
   const items = dublicateRemoving?.map((item) => {
     return {
       title: item,
-      total: categoryArrByTheme ? getTotal(categoryArrByTheme, item) : 0,
+      total: arrByTitle ? getTotal(arrByTitle, item) : 0,
     };
   });
 
@@ -34,4 +34,4 @@ function CategoryNavigation({ cards, year }: INavigation) {
   );
 }
 
-export default CategoryNavigation;
+export default TitleNavigation;

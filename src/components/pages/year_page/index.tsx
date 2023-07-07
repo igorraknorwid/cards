@@ -1,5 +1,5 @@
 import React from "react";
-import client from "../../sanityClient";
+import client from "../../../sanityClient";
 import { Link } from "react-router-dom";
 
 interface IYear {

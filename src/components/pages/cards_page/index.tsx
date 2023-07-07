@@ -1,9 +1,9 @@
 import React from "react";
-import client from "../../sanityClient";
+import client from "../../../sanityClient";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { ICard } from "../../types/card";
-import CardList from "../card_list/CardList";
+import { ICard } from "../../../types/card";
+import CardList from "../../card_list/CardList";
+import CategoryNavigation from "../../category_navigation/CategoryNavigation";
 
 function Cards() {
   const location = useLocation();
@@ -12,9 +12,6 @@ function Cards() {
   const [data, setData] = React.useState<ICard[] | null>(null);
   const [isError, setIsError] = React.useState<boolean>(false);
 
-  function getTotal(arr: string[], value: string) {
-    return arr.filter((categ) => categ === value).length;
-  }
   function setKartki(total: number) {
     if (total < 2) return "kartka";
     if (total > 2 && total < 5) return "kartki";
@@ -35,14 +32,7 @@ function Cards() {
     };
     fetchData();
   }, [year]);
-  const categoryArr = data?.map((item) => item.theme.title);
-  const dublicateRemoving = Array.from(new Set(categoryArr));
-  const categories = dublicateRemoving?.map((item) => {
-    return {
-      title: item,
-      total: categoryArr ? getTotal(categoryArr, item) : 0,
-    };
-  });
+
   // console.log("CARDS", data);
   // console.log("Category", categories);
   if (!data) return <div>...LOADING</div>;
@@ -55,17 +45,7 @@ function Cards() {
           {data.length} {setKartki(data.length)}
         </div>
       )}
-      <ul>
-        {categories.map((c, i) => (
-          <li key={i}>
-            <Link to={`category?year=${year}&category=${c.title}`}>
-              {c.title}
-            </Link>
-            {c.total ? <div>{c.total}</div> : null}
-          </li>
-        ))}
-      </ul>
-
+      <CategoryNavigation cards={data} year={year} />
       <CardList cards={data} />
     </div>
   );

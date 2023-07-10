@@ -24,6 +24,7 @@ function CardList({ cards, itemsPerPage }: ICardList) {
         cards={cards}
         itemsPerPage={itemsPerPage}
         handlePageChange={handlePageChange}
+        currentPage={currentPage}
       />
       <ul>
         {paginatedCards().map((item) => (
@@ -34,6 +35,7 @@ function CardList({ cards, itemsPerPage }: ICardList) {
         cards={cards}
         itemsPerPage={itemsPerPage}
         handlePageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </section>
   );

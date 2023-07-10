@@ -5,9 +5,15 @@ interface IPagination {
   cards: ICard[];
   itemsPerPage: number;
   handlePageChange: (pageNumber: number) => void;
+  currentPage: number;
 }
 
-function Pagination({ cards, itemsPerPage, handlePageChange }: IPagination) {
+function Pagination({
+  cards,
+  itemsPerPage,
+  handlePageChange,
+  currentPage,
+}: IPagination) {
   return (
     <section>
       <div>
@@ -15,7 +21,13 @@ function Pagination({ cards, itemsPerPage, handlePageChange }: IPagination) {
           { length: Math.ceil(cards.length / itemsPerPage) },
           (_, index) => index + 1
         ).map((pageNumber) => (
-          <button key={pageNumber} onClick={() => handlePageChange(pageNumber)}>
+          <button
+            key={pageNumber}
+            className={`${
+              pageNumber === currentPage ? "font-bold" : "font-light"
+            }`}
+            onClick={() => handlePageChange(pageNumber)}
+          >
             {pageNumber}
           </button>
         ))}

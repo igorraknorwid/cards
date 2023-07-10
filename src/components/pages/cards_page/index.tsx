@@ -30,8 +30,6 @@ function Cards() {
     fetchData();
   }, [year]);
 
-  // console.log("CARDS", data);
-  // console.log("Category", categories);
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (

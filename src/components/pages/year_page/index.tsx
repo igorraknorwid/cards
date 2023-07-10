@@ -30,7 +30,6 @@ function Years() {
   const sortedData = data?.sort(
     (a, b) => parseInt(a.title) - parseInt(b.title)
   );
-  console.log("data", data);
 
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>"Error fetching data from Sanity:"</div>;

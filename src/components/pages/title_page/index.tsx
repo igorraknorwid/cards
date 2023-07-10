@@ -15,7 +15,6 @@ function CardsByTitle() {
   const [isError, setIsError] = React.useState<boolean>(false);
   const [filter, setFilter] = React.useState<string | null>(null);
   const setDataFilter = (value: string | null) => {
-    console.log("filter value", value);
     setFilter(value);
   };
   const filteredData = data?.filter((item) => {
@@ -41,8 +40,6 @@ function CardsByTitle() {
     fetchData();
   }, [year, title]);
 
-  // console.log("CARDS", data);
-  console.log("Title", title);
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (

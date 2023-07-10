@@ -1,5 +1,6 @@
 import React from "react";
 import { ICard } from "../../types/card";
+import Card from "./Card";
 
 interface ICardList {
   cards: ICard[];
@@ -9,12 +10,7 @@ function CardList({ cards }: ICardList) {
   return (
     <ul>
       {cards.map((item) => (
-        <li key={item._id}>
-          <div>
-            {item.title}-{item.theme.title}
-          </div>
-          <img src={item.image_slug} alt={item.title} height={300} />
-        </li>
+        <Card key={item._id} card={item} />
       ))}
     </ul>
   );

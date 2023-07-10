@@ -42,8 +42,6 @@ function CardsByCategory() {
     }
   });
 
-  // console.log("CARDS", data);
-  // console.log("Category", category);
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (

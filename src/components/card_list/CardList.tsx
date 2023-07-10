@@ -1,6 +1,7 @@
 import React from "react";
 import { ICard } from "../../types/card";
 import Card from "./Card";
+import Pagination from "./Pagination";
 
 interface ICardList {
   cards: ICard[];
@@ -19,21 +20,21 @@ function CardList({ cards, itemsPerPage }: ICardList) {
   };
   return (
     <section>
-      <div>
-        {Array.from(
-          { length: Math.ceil(cards.length / itemsPerPage) },
-          (_, index) => index + 1
-        ).map((pageNumber) => (
-          <button key={pageNumber} onClick={() => handlePageChange(pageNumber)}>
-            {pageNumber}
-          </button>
-        ))}
-      </div>
+      <Pagination
+        cards={cards}
+        itemsPerPage={itemsPerPage}
+        handlePageChange={handlePageChange}
+      />
       <ul>
         {paginatedCards().map((item) => (
           <Card key={item._id} card={item} />
         ))}
       </ul>
+      <Pagination
+        cards={cards}
+        itemsPerPage={itemsPerPage}
+        handlePageChange={handlePageChange}
+      />
     </section>
   );
 }

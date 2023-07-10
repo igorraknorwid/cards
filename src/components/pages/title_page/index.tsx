@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
 import YearTitle from "../../year_title/YearTitle";
+import CategoryFilter from "../../filters/CategoryFilter";
 
 function CardsByTitle() {
   const location = useLocation();
@@ -12,6 +13,18 @@ function CardsByTitle() {
   const title = searchParams.get("title");
   const [data, setData] = React.useState<ICard[] | null>(null);
   const [isError, setIsError] = React.useState<boolean>(false);
+  const [filter, setFilter] = React.useState<string | null>(null);
+  const setDataFilter = (value: string | null) => {
+    console.log("filter value", value);
+    setFilter(value);
+  };
+  const filteredData = data?.filter((item) => {
+    if (filter === null) {
+      return true;
+    } else {
+      return item.theme.title === filter;
+    }
+  });
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +49,8 @@ function CardsByTitle() {
     <div className='m-10'>
       <YearTitle year={year} />
       <p>Nazwa:{title}</p>
-      <CardList cards={data} />
+      <CategoryFilter cards={data} dataHandler={setDataFilter} />
+      {filteredData && <CardList cards={filteredData} />}
     </div>
   );
 }

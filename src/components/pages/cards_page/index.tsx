@@ -7,6 +7,7 @@ import CategoryNavigation from "../../navigation/CategoryNavigation";
 import TitleNavigation from "../../navigation/TitleNavigation";
 import CardCounter from "../../card_couter/CardCounter";
 import YearTitle from "../../year_title/YearTitle";
+import Spinner from "../../common/Spinner";
 
 function Cards() {
   const location = useLocation();
@@ -35,10 +36,16 @@ function Cards() {
   return (
     <div className='m-10'>
       <YearTitle year={year} />
-      <CardCounter cards={data} />
-      <CategoryNavigation cards={data} year={year} />
-      <TitleNavigation cards={data} year={year} />
-      <CardList cards={data} itemsPerPage={5} />
+      {data ? (
+        <>
+          <CardCounter cards={data} />
+          <CategoryNavigation cards={data} year={year} />
+          <TitleNavigation cards={data} year={year} />
+          <CardList cards={data} itemsPerPage={5} />
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 }

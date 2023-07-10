@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
 import YearTitle from "../../year_title/YearTitle";
-import TitleFilter from "../../title_navigation/TitleFilter";
+import TitleFilter from "../../filters/TitleFilter";
 
 function CardsByCategory() {
   const location = useLocation();
@@ -15,7 +15,7 @@ function CardsByCategory() {
   const [filter, setFilter] = React.useState<string | null>(null);
   const [isError, setIsError] = React.useState<boolean>(false);
 
-  const filterItemHandler = (value: string | null) => {
+  const setDataFilter = (value: string | null) => {
     setFilter(value);
   };
 
@@ -43,14 +43,15 @@ function CardsByCategory() {
   });
 
   // console.log("CARDS", data);
-  console.log("Category", category);
+  // console.log("Category", category);
   if (!data) return <div>...LOADING</div>;
   if (isError) return <div>Error fetching data from Sanity!</div>;
   return (
     <div className='m-10'>
       <YearTitle year={year} />
       <p>Temat:{category}</p>
-      <TitleFilter cards={data} dataHandler={filterItemHandler} />
+      <TitleFilter cards={data} dataHandler={setDataFilter} />
+
       {filteredData && <CardList cards={filteredData} />}
     </div>
   );

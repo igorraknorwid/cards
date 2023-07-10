@@ -3,8 +3,8 @@ import client from "../../../sanityClient";
 import { useLocation } from "react-router-dom";
 import { ICard } from "../../../types/card";
 import CardList from "../../card_list/CardList";
-import CategoryNavigation from "../../category_navigation/CategoryNavigation";
-import TitleNavigation from "../../title_navigation/TitleNavigation";
+import CategoryNavigation from "../../navigation/CategoryNavigation";
+import TitleNavigation from "../../navigation/TitleNavigation";
 import CardCounter from "../../card_couter/CardCounter";
 import YearTitle from "../../year_title/YearTitle";
 

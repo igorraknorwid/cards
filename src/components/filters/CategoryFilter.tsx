@@ -5,7 +5,7 @@ function getTotal(arr: string[], value: string) {
   return arr.filter((item) => item === value).length;
 }
 
-interface ITitleFilter {
+interface IFilter {
   cards: ICard[];
   dataHandler: (value: string | null) => void;
 }
@@ -16,11 +16,11 @@ interface IItem {
   total: number;
 }
 
-function TitleFilter({ cards, dataHandler }: ITitleFilter) {
+function CategoryFilter({ cards, dataHandler }: IFilter) {
   const [navItems, setNavItems] = React.useState<IItem[] | null>(null);
 
   React.useEffect(() => {
-    const arrByTitle = cards.map((item) => item.title);
+    const arrByTitle = cards.map((item) => item.theme.title);
     const dublicateRemoving = Array.from(new Set(arrByTitle));
     const items: IItem[] = dublicateRemoving?.map((item) => {
       return {
@@ -34,15 +34,18 @@ function TitleFilter({ cards, dataHandler }: ITitleFilter) {
 
   const clickHandler = (ni: IItem) => {
     if (ni.isActive) {
+      //click on active filter item
       const arr = navItems?.map((item) => {
         return { ...item, isActive: false };
       });
       if (arr) {
+        //render
         setNavItems([...arr]);
       }
-
+      //swich off filter on parent component
       dataHandler(null);
     } else {
+      //click on not active filter item
       const arr = navItems?.map((item) => {
         if (ni.title === item.title) {
           return { ...item, isActive: true };
@@ -51,9 +54,11 @@ function TitleFilter({ cards, dataHandler }: ITitleFilter) {
         }
       });
       if (arr) {
+        //render
         setNavItems([...arr]);
       }
       dataHandler(ni.title);
+      //swich on filter on parent component
     }
   };
 
@@ -80,4 +85,4 @@ function TitleFilter({ cards, dataHandler }: ITitleFilter) {
   );
 }
 
-export default TitleFilter;
+export default CategoryFilter;

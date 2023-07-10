@@ -50,7 +50,7 @@ function CardsByCategory() {
       <p>Temat:{category}</p>
       <TitleFilter cards={data} dataHandler={setDataFilter} />
 
-      {filteredData && <CardList cards={filteredData} />}
+      {filteredData && <CardList cards={filteredData} itemsPerPage={5} />}
     </div>
   );
 }

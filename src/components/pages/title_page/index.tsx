@@ -47,7 +47,7 @@ function CardsByTitle() {
       <YearTitle year={year} />
       <p>Nazwa:{title}</p>
       <CategoryFilter cards={data} dataHandler={setDataFilter} />
-      {filteredData && <CardList cards={filteredData} />}
+      {filteredData && <CardList cards={filteredData} itemsPerPage={5} />}
     </div>
   );
 }

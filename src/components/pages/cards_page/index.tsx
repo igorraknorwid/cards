@@ -38,7 +38,7 @@ function Cards() {
       <CardCounter cards={data} />
       <CategoryNavigation cards={data} year={year} />
       <TitleNavigation cards={data} year={year} />
-      <CardList cards={data} />
+      <CardList cards={data} itemsPerPage={5} />
     </div>
   );
 }

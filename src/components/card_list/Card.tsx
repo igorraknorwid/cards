@@ -21,6 +21,7 @@ function Card({ card }: ICardComponent) {
     setIsModal((s) => !s);
   };
   React.useEffect(() => {
+    //set overflow
     setBodyScroll(isModal);
   }, [isModal]);
   return (
